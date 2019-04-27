@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CLIProtocol {
 
-    public List<PokemonType> getPokeTypeById (int id){
+    public List getPokeTypeById (int id){
         PokeApi pokeApi = new PokeApiClient();
         Pokemon pokemon = pokeApi.getPokemon(1);
         final List<PokemonType> types = pokemon.getTypes();
