@@ -17,34 +17,40 @@ import java.util.List;
 
 public class HTTPProtocol {
 
-    String rootUrl = "https://pokeapi.co/api/v2/pokemon/";
-    String name = "Charmander";
+    String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 
-    public List<PokeType> getPokemonBtName (String name) throws IOException {
+    public List<PokeType> getPokemonByName (String pokeName) throws Exception {
 
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://pokeapi.co/api/v2/pokemon/bulbasaur/")
+                .url(rootUrl + pokeName +"/")
                 .get()
                 .build();
 
         Response response = client.newCall(request).execute();
-        //final List<PokemonType> types = pokemon.getTypes();
         String jsondata = response.body().string();
 
-        JSONObject Jobject = new JSONObject(jsondata);
-        JSONArray Jarray = Jobject.getJSONArray("types");
+        if(response.code() == 404){
+            throw new Exception("Pokemon no existente");
+        }
+        else {
 
-        List <PokeType> pokeTypes = new ArrayList<>();
+            JSONObject Jobject = new JSONObject(jsondata);
+            JSONArray Jarray = Jobject.getJSONArray("types");
 
-        for (int i = 0; i < Jarray.length(); i++){
-            JSONObject object = Jarray.getJSONObject(i);
-            name = object.getJSONObject("type").getString("name");
-            pokeTypes.add( new PokeType(name));
+            List<PokeType> pokeTypes = new ArrayList<>();
+
+            for (int i = 0; i < Jarray.length(); i++) {
+                String name;
+                JSONObject object = Jarray.getJSONObject(i);
+                name = object.getJSONObject("type").getString("name");
+                pokeTypes.add(new PokeType(name));
+            }
+            return pokeTypes;
         }
 
-        return pokeTypes;
+
 
     }
 
