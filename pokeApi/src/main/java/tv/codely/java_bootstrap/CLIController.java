@@ -1,5 +1,6 @@
 package tv.codely.java_bootstrap;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class CLIController {
@@ -13,8 +14,10 @@ public class CLIController {
         PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
         try {
             pokeFinder.poketypesFinder(pokemonTeclado);
-        } catch (Exception e) {
+        } catch (PokeTypeException e) {
             System.out.println(e.getMessage());
+        } catch (IOException io){
+            System.out.println(io.getMessage());
         }
 
     }

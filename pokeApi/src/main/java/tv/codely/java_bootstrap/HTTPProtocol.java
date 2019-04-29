@@ -19,7 +19,7 @@ public class HTTPProtocol {
 
     String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 
-    public List<PokeType> getPokemonByName (String pokeName) throws Exception {
+    public List<PokeType> getPokemonByName (String pokeName) throws PokeTypeException, IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -32,7 +32,7 @@ public class HTTPProtocol {
         String jsondata = response.body().string();
 
         if(response.code() == 404){
-            throw new Exception("Pokemon no existente");
+            throw new PokeTypeException();
         }
         else {
 

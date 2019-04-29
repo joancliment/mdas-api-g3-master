@@ -1,10 +1,11 @@
 package tv.codely.java_bootstrap;
 
+import java.io.IOException;
 import java.util.List;
 
 public class PokemonTypeFinder {
 
-    public List<PokeType> poketypesFinder(String pokeName) throws Exception{
+    public List<PokeType> poketypesFinder(String pokeName) throws IOException, PokeTypeException{
 
         HTTPProtocol httpp = new HTTPProtocol();
         List<PokeType> typesHttp = null;
