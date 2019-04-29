@@ -10,7 +10,7 @@ public class PokemonTypeFinder {
         HTTPProtocol httpp = new HTTPProtocol();
         List<PokeType> typesHttp = null;
         System.out.println("Ejecución usando HTTP Protocol");
-        System.out.println("Pokemon: Bulbasaur, tipo:");
+        System.out.println("Pokemon:" + pokeName +", tipo:");
         typesHttp = httpp.getPokemonByName(pokeName);
         typesHttp.forEach((t) -> {System.out.println(t.getName());});
         return  typesHttp;
