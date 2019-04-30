@@ -9,10 +9,8 @@ public class PokemonTypeFinder {
 
         PokeApiClient httpp = new PokeApiClient();
         List<PokeType> typesHttp = null;
-        System.out.println("Ejecución usando HTTP Protocol");
-        System.out.println("Pokemon:" + pokeName +", tipo:");
         typesHttp = httpp.getPokemonByName(pokeName);
-        typesHttp.forEach((t) -> {System.out.println(t.getName());});
+        typesHttp.forEach((t) -> {t.getName();});
         return  typesHttp;
 
     }
