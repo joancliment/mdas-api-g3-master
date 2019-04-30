@@ -5,9 +5,9 @@ import java.util.List;
 
 public class PokemonTypeFinder {
 
-    public List<PokeType> poketypesFinder(String pokeName) throws IOException, PokeTypeException{
+    public List<PokeType> Find(String pokeName) throws IOException, PokeTypeException{
 
-        HTTPProtocol httpp = new HTTPProtocol();
+        PokeApiClient httpp = new PokeApiClient();
         List<PokeType> typesHttp = null;
         System.out.println("Ejecución usando HTTP Protocol");
         System.out.println("Pokemon:" + pokeName +", tipo:");

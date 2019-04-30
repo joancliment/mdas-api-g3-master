@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pokeApi.iml" filepath="$PROJECT_DIR$/pokeApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pokeApi.iml" filepath="$PROJECT_DIR$/pokeApi.iml" group="pokeApi" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/pokeApi_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pokeApi_main.iml" group="pokeApi" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/pokeApi_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pokeApi_test.iml" group="pokeApi" />
     </modules>

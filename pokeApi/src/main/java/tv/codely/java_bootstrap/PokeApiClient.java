@@ -1,21 +1,16 @@
 package tv.codely.java_bootstrap;
 
-import com.sun.deploy.net.HttpRequest;
-import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.internal.http.HttpMethod;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import sun.net.www.http.HttpClient;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class HTTPProtocol {
+public class PokeApiClient {
 
     String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 
@@ -49,11 +44,6 @@ public class HTTPProtocol {
             }
             return pokeTypes;
         }
-
-
-
     }
-
-
 }
 
