@@ -14,7 +14,7 @@ public class PokemonTypeFinderShould {
 		String pokemonTeclado = "pikachu";
 
 		PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
-        final List<PokeType> pokeTypes = pokeFinder.pokeFind(pokemonTeclado);
+        final List<PokeType> pokeTypes = pokeFinder.Find(pokemonTeclado);
 
 		final String actualPokemonTypeName = pokeTypes.get(0).getName();
 		final String expectedPokemonTypeName = "electric";
@@ -27,10 +27,10 @@ public class PokemonTypeFinderShould {
 		String pokemonTeclado = "";
 
 		PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
-		final List<PokeType> pokeTypes = pokeFinder.pokeFind(pokemonTeclado);
+		final List<PokeType> pokeTypes = pokeFinder.Find(pokemonTeclado);
 
 		final String actualPokemonTypeName = pokeTypes.get(0).getName();
-		final String expectedPokemonTypeName = "electric";
+		final String expectedPokemonTypeName = "Pokemon no encontrado";
 
 		assertEquals(expectedPokemonTypeName, actualPokemonTypeName);
 	}
