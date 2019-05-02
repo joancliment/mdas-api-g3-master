@@ -31,27 +31,27 @@ hs_err_pid*
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+pokeapi/.idea/**/workspace.xml
+pokeapi/.idea/**/tasks.xml
+pokeapi/.idea/**/usage.statistics.xml
+pokeapi/.idea/**/dictionaries
+pokeapi/.idea/**/shelf
 
 # Generated files
-.idea/**/contentModel.xml
+pokeapi/.idea/**/contentModel.xml
 
 # Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+pokeapi/.idea/**/dataSources/
+pokeapi/.idea/**/dataSources.ids
+pokeapi/.idea/**/dataSources.local.xml
+pokeapi/.idea/**/sqlDataSources.xml
+pokeapi/.idea/**/dynamic.xml
+pokeapi/.idea/**/uiDesigner.xml
+pokeapi/.idea/**/dbnavigator.xml
 
 # Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+pokeapi/.idea/**/gradle.xml
+pokeapi/.idea/**/libraries
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -65,7 +65,7 @@ hs_err_pid*
 cmake-build-*/
 
 # Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+pokeapi/.idea/**/mongoSettings.xml
 
 # File-based project format
 *.iws
@@ -74,13 +74,13 @@ cmake-build-*/
 out/
 
 # mpeltonen/sbt-idea plugin
-.idea_modules/
+pokeapi/.idea_modules/
 
 # JIRA plugin
 atlassian-ide-plugin.xml
 
 # Cursive Clojure plugin
-.idea/replstate.xml
+pokeapi/.idea/replstate.xml
 
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
@@ -89,10 +89,10 @@ crashlytics-build.properties
 fabric.properties
 
 # Editor-based Rest Client
-.idea/httpRequests
+pokeapi/.idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+pokeapi/.idea/caches/build_file_checksums.ser
 
 # JetBrains templates
 **___jb_tmp___
@@ -106,7 +106,7 @@ fabric.properties
 # *.ipr
 
 # Sonarlint plugin
-.idea/sonarlint
+pokeapi/.idea/sonarlint
 
 # End of https://www.gitignore.io/api/intellij
 
