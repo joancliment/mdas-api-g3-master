@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PokeApiClient {
+public class PokeApiPokemonTypeRepository {
 
     String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 

@@ -7,7 +7,7 @@ public class PokemonTypeFinder {
 
     public List<PokeType> Find(String pokeName) throws IOException, PokeTypeException{
 
-        PokeApiClient httpp = new PokeApiClient();
+        PokeApiPokemonTypeRepository httpp = new PokeApiPokemonTypeRepository();
         List<PokeType> typesHttp = null;
         typesHttp = httpp.getPokemonByName(pokeName);
         typesHttp.forEach((t) -> {t.getName();});
