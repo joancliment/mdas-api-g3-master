@@ -5,13 +5,17 @@ import java.util.List;
 
 public class PokemonTypeFinder {
 
-    public List<PokeType> Find(String pokeName) throws IOException, PokeTypeException{
+    private final PokemonTypeRepository pokemonTypeRepository;
 
-        PokeApiPokemonTypeRepository httpp = new PokeApiPokemonTypeRepository();
-        List<PokeType> typesHttp = null;
-        typesHttp = httpp.getPokemonByName(pokeName);
-        typesHttp.forEach((t) -> {t.getName();});
-        return  typesHttp;
+    public PokemonTypeFinder(PokemonTypeRepository pokemonTypeRepository) {
+        this.pokemonTypeRepository = pokemonTypeRepository;
+    }
+
+    public List<PokeType> invoke(String pokemonName) throws IOException, PokeTypeException{
+        List<PokeType> pokemonTypes = pokemonTypeRepository.search(pokemonName);
+        pokemonTypes.forEach((t) -> {t.getName();});
+
+        return pokemonTypes;
 
     }
 }

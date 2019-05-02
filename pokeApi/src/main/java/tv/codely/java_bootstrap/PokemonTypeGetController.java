@@ -1,9 +1,8 @@
 package tv.codely.java_bootstrap;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,10 +14,12 @@ public class PokemonTypeGetController {
 
     @RequestMapping(value = "/types", method=GET)
     public List<PokeType> getType(@RequestParam(value="name") String name) {
-        PokemonTypeFinder pokefinder = new PokemonTypeFinder();
+        PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
+        PokemonTypeFinder pokemonTypeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+
         List<PokeType> pokeTypes = new ArrayList<>();
         try {
-            return pokefinder.Find(name);
+            return pokemonTypeFinder.invoke(name);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PokeApiPokemonTypeRepository {
+public class PokeApiPokemonTypeRepository implements PokemonTypeRepository{
 
     String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 
-    public List<PokeType> getPokemonByName (String pokeName) throws PokeTypeException, IOException {
+    @Override
+    public List<PokeType> search(String pokeName) throws PokeTypeException, IOException {
 
         OkHttpClient client = new OkHttpClient();
 
@@ -45,5 +46,6 @@ public class PokeApiPokemonTypeRepository {
             return pokeTypes;
         }
     }
+
 }
 

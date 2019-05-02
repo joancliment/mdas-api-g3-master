@@ -1,71 +1,54 @@
 package tv.codely.java_bootstrap;
 
-import org.junit.jupiter.api.Assertions;
+import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class PokemonTypeFinderShould {
 
+    @Test
+    public void pokemon__found__pokeType() throws IOException, PokeTypeException {
+        String pokemonName = "random_pokemon";
+        List<PokeType> expectedPokemonTypes = new ArrayList<>();
+        expectedPokemonTypes.add(new PokeType("random_pokemon_type"));
 
-	@Test
-	public void pokemon_found() throws IOException, PokeTypeException{
-		String pokemonTeclado = "pikachu";
+        Map<String, List<PokeType>> inMemoryPokemonTypes =
+                Collections.singletonMap(pokemonName, expectedPokemonTypes);
+        InMemoryPokemonTypeRepository inMemoryPokemonTypeRepository = new InMemoryPokemonTypeRepository(inMemoryPokemonTypes);
 
-		PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
-		final List<PokeType> pokeTypes = pokeFinder.Find(pokemonTeclado);
+        PokemonTypeFinder pokemonTypeFinder = new PokemonTypeFinder(inMemoryPokemonTypeRepository);
+        final List<PokeType> actualPokemonTypes = pokemonTypeFinder.invoke(pokemonName);
 
-		final String actualPokemonTypeName = pokeTypes.get(0).getName();
-		final String expectedPokemonTypeName = "electric";
+        assertEquals(expectedPokemonTypes, actualPokemonTypes);
 
-		assertEquals(expectedPokemonTypeName, actualPokemonTypeName);
-	}
+        final Integer expectedRepositoryCalls = 1;
+        assertEquals(expectedRepositoryCalls, inMemoryPokemonTypeRepository.calls());
+    }
 
-	@Test
-	public void testPokeTypeException() throws IOException, PokeTypeException {
-		String pokemonTeclado = "";
+    @Test
+    public void pokemon__found__PokeTypeException() throws PokeTypeException {
+        String pokemonTeclado = "";
+        PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
+        PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        assertThrows(PokeTypeException.class, () -> pokeFinder.invoke(pokemonTeclado));
 
-		PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
+    }
 
+    @Test
+    public void pokemon__Poke_Api__Exception() throws IOException {
 
-		final String expectedPokemonTypeException = "Pokemon no encontrado";
+        String pokemonTeclado = "bulbasaur";
+        MockPokemonTypeRepositoryException pokeTypeRepository = new MockPokemonTypeRepositoryException();
+        assertThrows(IOException.class, () -> pokeTypeRepository.search(pokemonTeclado));
 
-		Exception exception = assertThrows(PokeTypeException.class, () ->
-				pokeFinder.Find(pokemonTeclado));
-		assertEquals(expectedPokemonTypeException, exception.getMessage());
-
-	}
-
-	@Test
-	public void pokemon_found_GetController() throws IOException, PokeTypeException{
-		String pokemonTeclado = "pikachu";
-
-		PokemonTypeGetController pokeFinder = new PokemonTypeGetController();
-
-		final String actualPokemonTypeName = pokeFinder.getType(pokemonTeclado).get(0).getName();
-		final String expectedPokemonTypeName = "electric";
-
-		assertEquals(expectedPokemonTypeName, actualPokemonTypeName);
-	}
-
-	@Test
-	public void testPokeGetControllerException() throws IOException, NullPointerException, PokeTypeException {
-		String pokemonTeclado = "";
-
-		PokemonTypeGetController pokeFinder = new PokemonTypeGetController();
-
-		final String expectedPokemonTypeException = null;
-
-		Exception exception = assertThrows(NullPointerException.class, () ->
-				pokeFinder.getType(pokemonTeclado).get(0).getName());
-		assertEquals(expectedPokemonTypeException, exception.getMessage());
-
-	}
+    }
 
 }

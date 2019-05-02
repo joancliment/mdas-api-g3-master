@@ -1,4 +1,9 @@
 package tv.codely.java_bootstrap;
 
-public class PokemonTypeRepository {
+import java.io.IOException;
+import java.util.List;
+
+public interface PokemonTypeRepository {
+
+    List<PokeType> search(String pokeName) throws IOException;
 }

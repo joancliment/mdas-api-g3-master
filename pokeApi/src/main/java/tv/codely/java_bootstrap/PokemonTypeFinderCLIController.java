@@ -12,9 +12,10 @@ public class PokemonTypeFinderCLIController {
         Scanner entradaEscaner = new Scanner(System.in); //Creación de un objeto Scanner
         pokemonTeclado = entradaEscaner.nextLine(); //Invocamos un método sobre un objeto Scanner
 
-        PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
+        PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
+        PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
         try {
-            pokeFinder.Find(pokemonTeclado);
+            pokeFinder.invoke(pokemonTeclado);
         } catch (PokeTypeException e) {
             System.out.println(e.getMessage());
         } catch (IOException io) {
