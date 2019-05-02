@@ -19,7 +19,7 @@ public class PokemonTypeFinderShould {
 		String pokemonTeclado = "pikachu";
 
 		PokemonTypeFinder pokeFinder = new PokemonTypeFinder();
-        final List<PokeType> pokeTypes = pokeFinder.Find(pokemonTeclado);
+		final List<PokeType> pokeTypes = pokeFinder.Find(pokemonTeclado);
 
 		final String actualPokemonTypeName = pokeTypes.get(0).getName();
 		final String expectedPokemonTypeName = "electric";
@@ -38,6 +38,32 @@ public class PokemonTypeFinderShould {
 
 		Exception exception = assertThrows(PokeTypeException.class, () ->
 				pokeFinder.Find(pokemonTeclado));
+		assertEquals(expectedPokemonTypeException, exception.getMessage());
+
+	}
+
+	@Test
+	public void pokemon_found_GetController() throws IOException, PokeTypeException{
+		String pokemonTeclado = "pikachu";
+
+		PokemonTypeGetController pokeFinder = new PokemonTypeGetController();
+
+		final String actualPokemonTypeName = pokeFinder.getType(pokemonTeclado).get(0).getName();
+		final String expectedPokemonTypeName = "electric";
+
+		assertEquals(expectedPokemonTypeName, actualPokemonTypeName);
+	}
+
+	@Test
+	public void testPokeGetControllerException() throws IOException, NullPointerException, PokeTypeException {
+		String pokemonTeclado = "";
+
+		PokemonTypeGetController pokeFinder = new PokemonTypeGetController();
+
+		final String expectedPokemonTypeException = null;
+
+		Exception exception = assertThrows(NullPointerException.class, () ->
+				pokeFinder.getType(pokemonTeclado).get(0).getName());
 		assertEquals(expectedPokemonTypeException, exception.getMessage());
 
 	}
