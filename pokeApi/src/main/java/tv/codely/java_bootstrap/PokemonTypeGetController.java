@@ -15,11 +15,18 @@ public class PokemonTypeGetController {
     @RequestMapping(value = "/types", method=GET)
     public List<PokeType> getType(@RequestParam(value="name") String name) {
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
-        PokemonTypeFinder pokemonTypeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
+        PokemonTypeFinder pokemonTypeFinderApi = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        PokemonTypeFinder pokemonTypeFinderCache = new PokemonTypeFinder(pokeCachePokemonTypeRepository);
 
-        List<PokeType> pokeTypes = new ArrayList<>();
         try {
-            return pokemonTypeFinder.invoke(name);
+            List<PokeType> pokeTypes = pokemonTypeFinderCache.invoke(name);
+            if(pokeTypes.isEmpty()){
+                return pokemonTypeFinderApi.invoke(name);
+            }
+            else{
+                return pokemonTypeFinderCache.invoke(name);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return null;

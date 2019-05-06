@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="pokeApi.main" target="1.8" />
       <module name="pokeApi.test" target="1.8" />
+      <module name="pokeApi_main" target="1.8" />
+      <module name="pokeApi_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
