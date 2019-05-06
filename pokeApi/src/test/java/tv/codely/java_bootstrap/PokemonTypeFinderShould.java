@@ -19,8 +19,8 @@ public class PokemonTypeFinderShould {
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = mock(PokeApiPokemonTypeRepository.class);
         PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenReturn(expectedPokemonTypes);
-
         assertEquals(typeFinder.invoke(pokemonName), expectedPokemonTypes);
+        verify(pokeApiPokemonTypeRepository, times(1)).search(pokemonName);
     }
 
     @Test
@@ -28,7 +28,6 @@ public class PokemonTypeFinderShould {
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = mock(PokeApiPokemonTypeRepository.class);
         PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenThrow(new PokeTypeException());
-
         assertThrows(PokeTypeException.class, () -> typeFinder.invoke(pokemonName));
     }
 
