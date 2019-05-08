@@ -17,7 +17,8 @@ public class PokemonTypeFinderShould {
         List<PokeType> expectedPokemonTypes = new ArrayList<>();
         expectedPokemonTypes.add(new PokeType("random_pokemon_type"));
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = mock(PokeApiPokemonTypeRepository.class);
-        PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = mock(PokeCachePokemonTypeRepository.class);
+        PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository, pokeCachePokemonTypeRepository);
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenReturn(expectedPokemonTypes);
         assertEquals(typeFinder.invoke(pokemonName), expectedPokemonTypes);
         verify(pokeApiPokemonTypeRepository, times(1)).search(pokemonName);
@@ -26,7 +27,8 @@ public class PokemonTypeFinderShould {
     @Test
     public void pokemon__found__PokeTypeException() throws PokeTypeException, IOException {
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = mock(PokeApiPokemonTypeRepository.class);
-        PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = mock(PokeCachePokemonTypeRepository.class);
+        PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository, pokeCachePokemonTypeRepository);
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenThrow(new PokeTypeException());
         assertThrows(PokeTypeException.class, () -> typeFinder.invoke(pokemonName));
     }
@@ -34,7 +36,8 @@ public class PokemonTypeFinderShould {
     @Test
     public void pokemon__Poke_Api__Exception() throws IOException {
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = mock(PokeApiPokemonTypeRepository.class);
-        PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = mock(PokeCachePokemonTypeRepository.class);
+        PokemonTypeFinder typeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository, pokeCachePokemonTypeRepository);
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenThrow(new IOException());
         assertThrows(IOException.class, () -> typeFinder.invoke(pokemonName));
 

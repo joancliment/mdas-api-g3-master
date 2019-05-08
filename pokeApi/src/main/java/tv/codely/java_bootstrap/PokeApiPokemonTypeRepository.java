@@ -1,5 +1,6 @@
 package tv.codely.java_bootstrap;
 
+import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -45,6 +46,11 @@ public class PokeApiPokemonTypeRepository implements PokemonTypeRepository{
             }
             return pokeTypes;
         }
+    }
+
+    @Override
+    public void save(String pokeName, List<PokeType> types) {
+
     }
 
 }

@@ -13,7 +13,8 @@ public class PokemonTypeFinderCLIController {
         pokemonTeclado = entradaEscaner.nextLine(); //Invocamos un método sobre un objeto Scanner
 
         PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
-        PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
+        PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
+        PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository, pokeCachePokemonTypeRepository);
         try {
             pokeFinder.invoke(pokemonTeclado);
         } catch (PokeTypeException e) {

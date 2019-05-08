@@ -1,5 +1,6 @@
 package tv.codely.java_bootstrap;
 import java.io.IOException;
+import java.lang.invoke.MethodHandle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,19 +15,11 @@ public class PokemonTypeGetController {
 
     @RequestMapping(value = "/types", method=GET)
     public List<PokeType> getType(@RequestParam(value="name") String name) {
-        PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
-        PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
-        PokemonTypeFinder pokemonTypeFinderApi = new PokemonTypeFinder(pokeApiPokemonTypeRepository);
-        PokemonTypeFinder pokemonTypeFinderCache = new PokemonTypeFinder(pokeCachePokemonTypeRepository);
-
+        PokemonTypeRepository pokeApiPokemonTypeRepo = new PokeApiPokemonTypeRepository();
+        PokemonTypeRepository pokeCachePokemonTypeRepo = new PokeCachePokemonTypeRepository();
+        PokemonTypeFinder pokemonTypeFinderApi = new PokemonTypeFinder(pokeApiPokemonTypeRepo, pokeCachePokemonTypeRepo);
         try {
-            List<PokeType> pokeTypes = pokemonTypeFinderCache.invoke(name);
-            if(pokeTypes.isEmpty()){
-                return pokemonTypeFinderApi.invoke(name);
-            }
-            else{
-                return pokemonTypeFinderCache.invoke(name);
-            }
+            return pokemonTypeFinderApi.invoke(name);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
