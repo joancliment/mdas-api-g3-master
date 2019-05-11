@@ -1,6 +1,5 @@
 package tv.codely.java_bootstrap;
 
-import me.sargunvohra.lib.pokekotlin.model.PokemonType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -16,12 +15,12 @@ public class PokeApiPokemonTypeRepository implements PokemonTypeRepository{
     String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 
     @Override
-    public List<PokeType> search(String pokeName) throws PokeTypeException, IOException {
+    public PokeTypeList search(PokeName pokeName) throws PokeTypeException, IOException {
 
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url(rootUrl + pokeName +"/")
+                .url(rootUrl + pokeName.getPokeName() +"/")
                 .get()
                 .build();
 
@@ -44,12 +43,12 @@ public class PokeApiPokemonTypeRepository implements PokemonTypeRepository{
                 name = object.getJSONObject("type").getString("name");
                 pokeTypes.add(new PokeType(name));
             }
-            return pokeTypes;
+            return new PokeTypeList(pokeTypes);
         }
     }
 
     @Override
-    public void save(String pokeName, List<PokeType> types) {
+    public void save(PokeName pokeName, PokeTypeList types) {
 
     }
 

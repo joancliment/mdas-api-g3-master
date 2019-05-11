@@ -1,22 +1,25 @@
 package tv.codely.java_bootstrap;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PokeCachePokemonTypeRepository implements PokemonTypeRepository{
 
-    Map<String, List<PokeType>> pokeCache = new HashMap<>();
+    Map<PokeName, PokeTypeList> pokeCache = new HashMap<>();
 
     @Override
-    public List<PokeType> search(String pokeName) throws IOException {
-       return pokeCache.get(pokeName);
+    public PokeTypeList search(PokeName pokeName) throws IOException {
+        PokeTypeList pokeType = pokeCache.get(pokeName);
+        if(pokeType == null){
+            throw new PokeTypeException();
+        }
+        return pokeType;
     }
 
     @Override
-    public void save(String pokeName, List<PokeType> types) {
-        pokeCache.put(pokeName, types);
+    public void save(PokeName pokeName, PokeTypeList pokeTypes) {
+
+        pokeCache.put(pokeName, pokeTypes);
     }
 }

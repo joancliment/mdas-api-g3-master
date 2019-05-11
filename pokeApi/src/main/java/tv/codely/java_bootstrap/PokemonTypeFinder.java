@@ -1,7 +1,6 @@
 package tv.codely.java_bootstrap;
 
 import java.io.IOException;
-import java.util.List;
 
 public class PokemonTypeFinder {
 
@@ -13,12 +12,15 @@ public class PokemonTypeFinder {
         this.cacheRepository = cacheRepository;
     }
 
-    public List<PokeType> invoke(String pokemonName) throws IOException, PokeTypeException{
-        List<PokeType> pokemonTypes;
-        pokemonTypes = cacheRepository.search(pokemonName);
-        if (pokemonTypes == null || pokemonTypes.size() == 0){
+    public PokeTypeList invoke(PokeName pokemonName) throws IOException, PokeTypeException{
+        PokeTypeList pokemonTypes;
+        try {
+            pokemonTypes = cacheRepository.search(pokemonName);
+        }
+        catch (PokeTypeException e){
             pokemonTypes = pokeApiRepository.search(pokemonName);
             cacheRepository.save(pokemonName, pokemonTypes);
+
         }
 
         return pokemonTypes;

@@ -1,7 +1,6 @@
 package tv.codely.java_bootstrap;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 public class PokemonTypeCLIController {
@@ -17,8 +16,8 @@ public class PokemonTypeCLIController {
         PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
         PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiRepository, pokeCachePokemonTypeRepository);
         try {
-            List<PokeType> pokeType = pokeFinder.invoke(pokemonTeclado);
-            pokeType.forEach((t) -> {
+            PokeTypeList pokeType = pokeFinder.invoke(new PokeName(pokemonTeclado));
+            pokeType.get().forEach((t) -> {
                 System.out.println(t.getName());});
         } catch (PokeTypeException e) {
             System.out.println(e.getMessage());
