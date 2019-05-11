@@ -1,9 +1,10 @@
 package tv.codely.java_bootstrap;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
-public class PokemonTypeFinderCLIController {
+public class PokemonTypeCLIController {
 
     public static void main(String[] args) {
 
@@ -12,11 +13,13 @@ public class PokemonTypeFinderCLIController {
         Scanner entradaEscaner = new Scanner(System.in); //Creación de un objeto Scanner
         pokemonTeclado = entradaEscaner.nextLine(); //Invocamos un método sobre un objeto Scanner
 
-        PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
+        PokeApiPokemonTypeRepository pokeApiRepository = new PokeApiPokemonTypeRepository();
         PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
-        PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiPokemonTypeRepository, pokeCachePokemonTypeRepository);
+        PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiRepository, pokeCachePokemonTypeRepository);
         try {
-            pokeFinder.invoke(pokemonTeclado);
+            List<PokeType> pokeType = pokeFinder.invoke(pokemonTeclado);
+            pokeType.forEach((t) -> {
+                System.out.println(t.getName());});
         } catch (PokeTypeException e) {
             System.out.println(e.getMessage());
         } catch (IOException io) {
