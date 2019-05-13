@@ -1,10 +1,15 @@
-package tv.codely.java_bootstrap;
+package tv.codely.java_bootstrap.Shared.Infrastructure;
+
+import tv.codely.java_bootstrap.Shared.Domain.PokeName;
+import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
+import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
+import tv.codely.java_bootstrap.Shared.Domain.PokemonTypeRepository;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PokeCachePokemonTypeRepository implements PokemonTypeRepository{
+public class PokeCachePokemonTypeRepository implements PokemonTypeRepository {
 
     Map<PokeName, PokeTypeList> pokeCache = new HashMap<>();
 

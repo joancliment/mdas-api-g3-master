@@ -1,4 +1,9 @@
-package tv.codely.java_bootstrap;
+package tv.codely.java_bootstrap.Shared.Infrastructure;
+
+import tv.codely.java_bootstrap.Shared.Domain.PokeName;
+import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
+import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
+import tv.codely.java_bootstrap.Shared.Domain.PokemonTypeRepository;
 
 import java.io.IOException;
 
@@ -12,7 +17,7 @@ public class PokemonTypeFinder {
         this.cacheRepository = cacheRepository;
     }
 
-    public PokeTypeList invoke(PokeName pokemonName) throws IOException, PokeTypeException{
+    public PokeTypeList invoke(PokeName pokemonName) throws IOException, PokeTypeException {
         PokeTypeList pokemonTypes;
         try {
             pokemonTypes = cacheRepository.search(pokemonName);

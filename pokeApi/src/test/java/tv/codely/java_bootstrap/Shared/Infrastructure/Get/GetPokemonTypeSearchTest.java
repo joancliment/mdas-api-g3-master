@@ -1,4 +1,4 @@
-package tv.codely.java_bootstrap.Acceptance.Get;
+package tv.codely.java_bootstrap.Shared.Infrastructure.Get;
 
 
 import cucumber.api.CucumberOptions;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features="src/test/resources/features/GetPokemonTypeSearch.feature",
-        glue = {"tv.codely.java_bootstrap.Acceptance.Get"}
+        glue = {"tv.codely.java_bootstrap.Application.Get"}
 )
  public class GetPokemonTypeSearchTest {
 }

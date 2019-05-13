@@ -1,17 +1,13 @@
-package tv.codely.java_bootstrap.Acceptance.Get;
+package tv.codely.java_bootstrap.Shared.Infrastructure.Get;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import tv.codely.java_bootstrap.PokeName;
-import tv.codely.java_bootstrap.PokemonWebServer;
-import tv.codely.java_bootstrap.Stub.PokeNameStub;
+import tv.codely.java_bootstrap.Shared.Infrastructure.PokemonWebServer;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class GetStepDefs {
@@ -29,7 +25,7 @@ public class GetStepDefs {
 
     @Given("^i'm in Browser$")
     public void i_m_in_or_Browser() throws Throwable {
-        String URL = "localhost:8080/types/pikachu";
+        String URL = "localhost:8080/types?name=charizard";
         driver.get(URL);
         driver.getTitle();
         driver.getCurrentUrl();

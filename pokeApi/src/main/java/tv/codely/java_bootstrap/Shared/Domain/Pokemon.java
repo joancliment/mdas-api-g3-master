@@ -1,4 +1,4 @@
-package tv.codely.java_bootstrap;
+package tv.codely.java_bootstrap.Shared.Domain;
 
 public class Pokemon {
     PokeName pokeName;

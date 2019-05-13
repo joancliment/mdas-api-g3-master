@@ -1,8 +1,7 @@
 package tv.codely.java_bootstrap.Stub;
 
-import tv.codely.java_bootstrap.PokeName;
-import tv.codely.java_bootstrap.PokeType;
-import tv.codely.java_bootstrap.PokeTypeList;
+import tv.codely.java_bootstrap.Shared.Domain.PokeType;
+import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
 
 import java.util.ArrayList;
 import java.util.List;

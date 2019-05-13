@@ -1,16 +1,18 @@
-package tv.codely.java_bootstrap;
+package tv.codely.java_bootstrap.Shared.Infrastructure;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import tv.codely.java_bootstrap.Shared.Domain.*;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class PokeApiPokemonTypeRepository implements PokemonTypeRepository{
+public class PokeApiPokemonTypeRepository implements PokemonTypeRepository {
 
     String rootUrl = "http://pokeapi.co/api/v2/pokemon/";
 

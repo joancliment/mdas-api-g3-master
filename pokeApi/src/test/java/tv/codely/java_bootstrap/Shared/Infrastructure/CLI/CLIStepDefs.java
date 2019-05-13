@@ -1,10 +1,9 @@
-package tv.codely.java_bootstrap.Acceptance.CLI;
+package tv.codely.java_bootstrap.Shared.Infrastructure.CLI;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import tv.codely.java_bootstrap.PokeName;
+import tv.codely.java_bootstrap.Shared.Domain.PokeName;
 import tv.codely.java_bootstrap.Stub.PokeNameStub;
 
 import java.io.IOException;
