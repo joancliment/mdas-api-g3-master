@@ -1,4 +1,4 @@
-package tv.codely.java_bootstrap.Acceptance;
+package tv.codely.java_bootstrap.Acceptance.Get;
 
 
 import cucumber.api.CucumberOptions;

@@ -1,4 +1,4 @@
-package tv.codely.java_bootstrap.Acceptance;
+package tv.codely.java_bootstrap.Acceptance.CLI;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
@@ -12,11 +12,12 @@ import java.io.IOException;
 public class CLIStepDefs {
     Process proc;
 
-    @Given("^i'm in CLI or Browser$")
-    public void i_m_in_CLI_or_Browser() throws Throwable {
+    @Given("^i'm in CLI$")
+    public void i_m_in_CLI() throws Throwable {
         //en mac ("/bin/bash", "-c", ...
         //en win ("cmd.exe", "/c", ...
-        String[] args = new String[] {"cmd.exe", "/c", "java PokemonTypeCLIController", "", ""};
+        String[] args = new String[] {"cmd.exe", "/c",
+                "java src/main/java/tv.codely.java_bootstrap/PokemonTypeCLIController", "", ""};
         proc = new ProcessBuilder(args).start();
     }
 
@@ -28,7 +29,7 @@ public class CLIStepDefs {
     }
 
     @Then("^return the pokemon types$")
-    public void ireturnTypes(DataTable arg1) {
+    public void ireturnTypes() {
         try{
             int w = proc.getInputStream().read();
             System.out.println(w);
@@ -38,7 +39,6 @@ public class CLIStepDefs {
         /* String actualPokemon = actualPokemonFind.get(0).getName();
         String expectedPokemom = this.pokeType.getName();
         assertEquals(expectedPokemom, actualPokemon);*/
-        System.out.println(arg1);
     }
 }
 
