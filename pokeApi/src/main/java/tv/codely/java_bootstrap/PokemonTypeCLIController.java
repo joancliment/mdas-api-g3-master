@@ -8,15 +8,14 @@ public class PokemonTypeCLIController {
     public static void main(String[] args) {
 
         System.out.println("Por favor introduce el nombre de un pokemon por teclado");
-        String pokemonTeclado = "";
-        Scanner entradaEscaner = new Scanner(System.in); //Creación de un objeto Scanner
-        pokemonTeclado = entradaEscaner.nextLine(); //Invocamos un método sobre un objeto Scanner
+        Scanner scanner = new Scanner(System.in); //Creación de un objeto Scanner
+        String pokemonName = scanner.nextLine(); //Invocamos un método sobre un objeto Scanner
 
         PokeApiPokemonTypeRepository pokeApiRepository = new PokeApiPokemonTypeRepository();
         PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
         PokemonTypeFinder pokeFinder = new PokemonTypeFinder(pokeApiRepository, pokeCachePokemonTypeRepository);
         try {
-            PokeTypeList pokeType = pokeFinder.invoke(new PokeName(pokemonTeclado));
+            PokeTypeList pokeType = pokeFinder.invoke(new PokeName(pokemonName));
             pokeType.get().forEach((t) -> {
                 System.out.println(t.getName());});
         } catch (PokeTypeException e) {
