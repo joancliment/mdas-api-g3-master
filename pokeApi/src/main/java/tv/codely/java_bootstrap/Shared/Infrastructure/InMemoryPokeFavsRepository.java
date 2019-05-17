@@ -3,9 +3,7 @@ package tv.codely.java_bootstrap.Shared.Infrastructure;
 import tv.codely.java_bootstrap.Shared.Domain.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class InMemoryPokeFavsRepository implements PokeFavsRepository {
 
@@ -18,8 +16,15 @@ public class InMemoryPokeFavsRepository implements PokeFavsRepository {
     }
 
     @Override
-    public int countFavorites(PokeName pokeName) {
-        return 0;
+    public TotalPokeFavs countFavorites(PokeName pokeName) {
+        final TotalPokeFavs totalFavs = new TotalPokeFavs(0);
+        pokeFavs.forEach(p->{
+            if(p.getPokeName().get().equals(pokeName.get()))
+                 totalFavs.increase();
+        });
+        return totalFavs;
     }
 
 }
+
+

@@ -4,7 +4,7 @@ public class PokeName {
 
     private String pokeName;
 
-    public String getPokeName() {
+    public String get() {
         return pokeName;
     }
     

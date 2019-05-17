@@ -23,8 +23,8 @@ public class CLIStepDefs {
     @When("^i enter pokemon name <pokemonName>$")
     public void i_enter_pokemon_name() throws Throwable {
         PokeName pokeName = PokeNameStub.generateRandom();
-        proc.getOutputStream().write(pokeName.getPokeName().getBytes());
-       System.out.println(pokeName.getPokeName());
+        proc.getOutputStream().write(pokeName.get().getBytes());
+       System.out.println(pokeName.get());
     }
 
     @Then("^return the pokemon types$")

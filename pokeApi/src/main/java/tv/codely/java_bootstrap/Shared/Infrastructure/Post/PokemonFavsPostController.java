@@ -9,6 +9,7 @@ import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
 import tv.codely.java_bootstrap.Shared.Domain.UserID;
 import tv.codely.java_bootstrap.Shared.Domain.UserPokeFavs;
 import tv.codely.java_bootstrap.Shared.Infrastructure.InMemoryPokeFavsRepository;
+import tv.codely.java_bootstrap.Shared.Infrastructure.MemoryBD;
 
 import java.io.IOException;
 
@@ -28,7 +29,8 @@ public class PokemonFavsPostController {
     public String addFavorite(@RequestParam(value="name") String name, @RequestParam(value="user") String user) throws IOException, PokeTypeException {
         String result;
         InMemoryPokeFavsRepository inMemoryPokeFavsRepository = new InMemoryPokeFavsRepository();
-        PokemonFavoriteAdder pokemonFavoriteAdder = new PokemonFavoriteAdder(inMemoryPokeFavsRepository);
+        MemoryBD memoryBd = MemoryBD.getInstance(inMemoryPokeFavsRepository);
+        PokemonFavoriteAdder pokemonFavoriteAdder = new PokemonFavoriteAdder(memoryBd.pokeFavsRepository);
         result = pokemonFavoriteAdder.invoke(new UserPokeFavs(new PokeName(name), new UserID(user)));
         return result;
     }
