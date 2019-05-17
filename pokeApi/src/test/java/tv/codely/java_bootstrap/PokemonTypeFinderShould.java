@@ -1,7 +1,7 @@
 package tv.codely.java_bootstrap;
 
 import org.junit.jupiter.api.Test;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokemonTypeFinder;
+import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
 import tv.codely.java_bootstrap.Shared.Domain.PokeName;
 import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
 import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;

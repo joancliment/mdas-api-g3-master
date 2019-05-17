@@ -1,4 +1,4 @@
-package tv.codely.java_bootstrap.Shared.Infrastructure;
+package tv.codely.java_bootstrap.Shared.Application;
 
 import tv.codely.java_bootstrap.Shared.Domain.PokeName;
 import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;

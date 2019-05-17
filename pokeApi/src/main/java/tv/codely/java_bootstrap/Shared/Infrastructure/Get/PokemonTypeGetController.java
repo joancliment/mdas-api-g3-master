@@ -4,12 +4,15 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokemonTypeFinder;
+import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
 import tv.codely.java_bootstrap.Shared.Domain.*;
+import tv.codely.java_bootstrap.Shared.Infrastructure.InMemoryPokeFavsRepository;
 import tv.codely.java_bootstrap.Shared.Infrastructure.PokeApiPokemonTypeRepository;
 import tv.codely.java_bootstrap.Shared.Infrastructure.PokeCachePokemonTypeRepository;
+import tv.codely.java_bootstrap.Shared.Application.PokemonFavoriteAdder;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 public class PokemonTypeGetController {

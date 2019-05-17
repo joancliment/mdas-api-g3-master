@@ -1,6 +1,6 @@
 package tv.codely.java_bootstrap.Shared.Infrastructure.CLI;
 
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokemonTypeFinder;
+import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
 import tv.codely.java_bootstrap.Shared.Domain.PokeName;
 import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
 import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
