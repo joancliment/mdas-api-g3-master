@@ -3,7 +3,7 @@ package tv.codely.java_bootstrap.Shared.Infrastructure.CLI;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import tv.codely.java_bootstrap.Shared.Domain.PokeName;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeName;
 import tv.codely.java_bootstrap.Stub.PokeNameStub;
 
 import java.io.IOException;
@@ -15,8 +15,7 @@ public class CLIStepDefs {
     public void i_m_in_CLI() throws Throwable {
         //en mac ("/bin/bash", "-c", ...
         //en win ("cmd.exe", "/c", ...
-        String[] args = new String[] {"cmd.exe", "/c",
-                "java src/main/java/tv.codely.java_bootstrap/PokemonTypeCLIController", "", ""};
+        String[] args = new String[] {"/bin/bash", "/c", "java src/main/java/tv.codely.java_bootstrap.Shared/Infrastructure/CLI/PokemonTypeCLIController", "", ""};
         proc = new ProcessBuilder(args).start();
     }
 
@@ -35,9 +34,6 @@ public class CLIStepDefs {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-        /* String actualPokemon = actualPokemonFind.get(0).getName();
-        String expectedPokemom = this.pokeType.getName();
-        assertEquals(expectedPokemom, actualPokemon);*/
     }
 }
 

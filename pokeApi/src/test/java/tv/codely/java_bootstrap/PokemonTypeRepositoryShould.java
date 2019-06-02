@@ -1,11 +1,11 @@
 package tv.codely.java_bootstrap;
 
 import org.junit.jupiter.api.Test;
-import tv.codely.java_bootstrap.Shared.Domain.PokeName;
-import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
-import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeApiPokemonTypeRepository;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeCachePokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeName;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeTypeException;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeTypeList;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeApiPokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeCachePokemonTypeRepository;
 import tv.codely.java_bootstrap.Stub.PokeNameStub;
 import tv.codely.java_bootstrap.Stub.PokeTypeListStub;
 
@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PokemonTypeRepositoryShould {
 
-    //public PokeNameStub pokeName = new PokeNameStub();
     PokeApiPokemonTypeRepository pokeApiPokemonTypeRepository = new PokeApiPokemonTypeRepository();
     PokeCachePokemonTypeRepository pokeCachePokemonTypeRepository = new PokeCachePokemonTypeRepository();
     PokeTypeList pokemonTypes;
@@ -37,11 +36,8 @@ public class PokemonTypeRepositoryShould {
     public void pokemon__cache__search__pokeType() throws IOException {
         PokeName name = PokeNameStub.generateRandom();
         PokeTypeList pokeTypes = PokeTypeListStub.generateRandom();
-
         assertThrows(PokeTypeException.class, () -> pokeCachePokemonTypeRepository.search(name));
-
         pokeCachePokemonTypeRepository.save(name, pokeTypes);
-
         pokemonTypes = pokeCachePokemonTypeRepository.search(name);
         boolean expected = (pokemonTypes.get().isEmpty());
         assertEquals(false, expected);

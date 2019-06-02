@@ -1,6 +1,6 @@
 package tv.codely.java_bootstrap.Stub;
 
-import tv.codely.java_bootstrap.Shared.Domain.PokeName;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeName;
 
 public class PokeNameStub {
 

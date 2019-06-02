@@ -1,6 +1,9 @@
-package tv.codely.java_bootstrap.Shared.Infrastructure;
+package tv.codely.java_bootstrap.Pokemon.Infrastructure;
 
-import tv.codely.java_bootstrap.Shared.Domain.*;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeFavsRepository;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeName;
+import tv.codely.java_bootstrap.Pokemon.Domain.TotalPokeFavs;
+import tv.codely.java_bootstrap.Pokemon.Domain.UserPokeFavs;
 
 import java.util.ArrayList;
 import java.util.List;

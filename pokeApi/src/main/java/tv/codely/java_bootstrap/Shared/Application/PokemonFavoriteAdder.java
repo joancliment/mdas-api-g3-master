@@ -1,9 +1,7 @@
 package tv.codely.java_bootstrap.Shared.Application;
 
-import tv.codely.java_bootstrap.Shared.Domain.*;
-import tv.codely.java_bootstrap.Shared.Infrastructure.InMemoryPokeFavsRepository;
-
-import java.io.IOException;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeFavsRepository;
+import tv.codely.java_bootstrap.Pokemon.Domain.UserPokeFavs;
 
 public class PokemonFavoriteAdder {
 

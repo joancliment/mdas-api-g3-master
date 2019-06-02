@@ -1,12 +1,12 @@
 package tv.codely.java_bootstrap;
 
 import org.junit.jupiter.api.Test;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeApiPokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeCachePokemonTypeRepository;
 import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
-import tv.codely.java_bootstrap.Shared.Domain.PokeName;
-import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
-import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeApiPokemonTypeRepository;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeCachePokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeName;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeTypeException;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeTypeList;
 import tv.codely.java_bootstrap.Stub.PokeNameStub;
 import tv.codely.java_bootstrap.Stub.PokeTypeListStub;
 
@@ -34,7 +34,6 @@ public class PokemonTypeFinderShould {
 
     @Test
     public void pokemon__found__PokeTypeException() throws PokeTypeException, IOException {
-
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenThrow(PokeTypeException.class);
         when(pokeCachePokemonTypeRepository.search(pokemonName)).thenThrow(PokeTypeException.class);
         assertThrows(PokeTypeException.class, () -> typeFinder.invoke(pokemonName));
@@ -42,11 +41,9 @@ public class PokemonTypeFinderShould {
 
     @Test
     public void pokemon__Poke_Api__Exception() throws IOException {
-
         when(pokeApiPokemonTypeRepository.search(pokemonName)).thenThrow(new IOException());
         when(pokeCachePokemonTypeRepository.search(pokemonName)).thenThrow(PokeTypeException.class);
         assertThrows(IOException.class, () -> typeFinder.invoke(pokemonName));
-
     }
 
 }

@@ -1,4 +1,6 @@
-package tv.codely.java_bootstrap.Shared.Domain;
+package tv.codely.java_bootstrap.Pokemon.Domain;
+
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeType;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
-package tv.codely.java_bootstrap.Shared.Infrastructure.CLI;
+package tv.codely.java_bootstrap.Pokemon.Infrastructure.CLI;
 
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeApiPokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeCachePokemonTypeRepository;
 import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
-import tv.codely.java_bootstrap.Shared.Domain.PokeName;
-import tv.codely.java_bootstrap.Shared.Domain.PokeTypeException;
-import tv.codely.java_bootstrap.Shared.Domain.PokeTypeList;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeApiPokemonTypeRepository;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeCachePokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeName;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeTypeException;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeTypeList;
 
 import java.io.IOException;
 import java.util.Scanner;

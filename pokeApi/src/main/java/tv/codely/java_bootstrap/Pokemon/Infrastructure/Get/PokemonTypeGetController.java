@@ -1,4 +1,4 @@
-package tv.codely.java_bootstrap.Shared.Infrastructure.Get;
+package tv.codely.java_bootstrap.Pokemon.Infrastructure.Get;
 import java.io.IOException;
 import java.util.List;
 
@@ -8,12 +8,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import tv.codely.java_bootstrap.Pokemon.Domain.*;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.InMemoryPokeFavsRepository;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.MemoryBD;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeApiPokemonTypeRepository;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.PokeCachePokemonTypeRepository;
 import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
-import tv.codely.java_bootstrap.Shared.Domain.*;
-import tv.codely.java_bootstrap.Shared.Infrastructure.InMemoryPokeFavsRepository;
-import tv.codely.java_bootstrap.Shared.Infrastructure.MemoryBD;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeApiPokemonTypeRepository;
-import tv.codely.java_bootstrap.Shared.Infrastructure.PokeCachePokemonTypeRepository;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController

@@ -1,10 +1,11 @@
-package tv.codely.java_bootstrap.Shared.Domain;
+package tv.codely.java_bootstrap.Pokemon.Domain;
 
 public class PokeName {
 
     private String pokeName;
 
     public String get() {
+
         return pokeName;
     }
     

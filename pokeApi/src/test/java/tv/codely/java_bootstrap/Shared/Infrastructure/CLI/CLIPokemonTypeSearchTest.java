@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features="src/test/resources/features/CLIPokemonTypeSearch.feature",
-        glue = {"tv.codely.java_bootstrap.Application.CLI"}
+        glue = {"tv.codely.java_bootstrap.Shared.Infrastructure.CLI"}
 )
  public class CLIPokemonTypeSearchTest {
 }

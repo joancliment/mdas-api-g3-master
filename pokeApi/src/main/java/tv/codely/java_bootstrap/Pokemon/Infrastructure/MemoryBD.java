@@ -1,6 +1,6 @@
-package tv.codely.java_bootstrap.Shared.Infrastructure;
+package tv.codely.java_bootstrap.Pokemon.Infrastructure;
 
-import tv.codely.java_bootstrap.Shared.Domain.PokeFavsRepository;
+import tv.codely.java_bootstrap.Pokemon.Domain.PokeFavsRepository;
 
 public class MemoryBD {
 

@@ -1,11 +1,11 @@
-package tv.codely.java_bootstrap.Shared.Infrastructure;
+package tv.codely.java_bootstrap.Pokemon.Infrastructure;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import tv.codely.java_bootstrap.Shared.Domain.*;
+import tv.codely.java_bootstrap.Pokemon.Domain.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
