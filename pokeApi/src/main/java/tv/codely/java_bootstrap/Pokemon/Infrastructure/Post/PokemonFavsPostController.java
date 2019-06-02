@@ -8,7 +8,7 @@ import tv.codely.java_bootstrap.Shared.Application.DomainEventSubscriber;
 import tv.codely.java_bootstrap.Pokemon.Application.Publish.PokemonFavoritePublisher;
 import tv.codely.java_bootstrap.Pokemon.Application.Notification.SendPushToSubscribersOnPokemonFavoritePublished;
 import tv.codely.java_bootstrap.Shared.Domain.*;
-import tv.codely.java_bootstrap.Shared.Infrastructure.ReactorEventBus;
+import tv.codely.java_bootstrap.Pokemon.Infrastructure.ReactorEventBus;
 
 import java.io.IOException;
 import java.util.Arrays;
