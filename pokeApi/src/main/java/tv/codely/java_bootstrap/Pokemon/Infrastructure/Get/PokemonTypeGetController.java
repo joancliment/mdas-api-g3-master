@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import tv.codely.java_bootstrap.Shared.Application.PokemonTypeFinder;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class PokemonTypeGetController {
 
@@ -34,6 +36,7 @@ public class PokemonTypeGetController {
         pokeList = pokemonTypeFinderApi.invoke(new PokeName(name));
         return pokeList.get();
     }
+
 
     @RequestMapping(value = "/pokemon", method = GET)
     public String getPokemon(@RequestParam(value = "name") String name) throws IOException, PokeTypeException {
